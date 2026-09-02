@@ -337,6 +337,29 @@
   }
   .duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.85rem;}
 
+  /* --- figures --- */
+  .fig{
+    margin:0;display:flex;flex-direction:column;gap:.8rem;
+    background:var(--card);border:1px solid var(--hairline);border-radius:16px;
+    box-shadow:var(--shadow);padding:1.3rem clamp(1rem,3vw,1.5rem);
+  }
+  .fig svg{width:100%;height:auto;display:block;color:var(--ink-2);overflow:visible;}
+  .fig figcaption{font-size:.88rem;color:var(--muted);line-height:1.55;}
+  .fig figcaption b{color:var(--ink);font-weight:700;}
+  .bx{fill:var(--sage);stroke:currentColor;stroke-width:1.4;}
+  .bxt{fill:var(--ink);font-size:12.5px;font-weight:700;}
+  .bxs{fill:var(--muted);font-size:11px;font-weight:500;}
+  .arw{stroke:currentColor;stroke-width:1.5;fill:none;}
+  .arwt{fill:var(--sage-deep);font-size:11px;font-weight:700;}
+  .bar{fill:var(--sage-deep);}
+  .barv{fill:var(--muted);font-size:10px;}
+  .tgt{stroke:var(--c-fat);stroke-width:1.6;stroke-dasharray:5 4;fill:none;}
+  .tgtt{fill:var(--c-fat);font-size:11px;font-weight:700;}
+  .avg{stroke:var(--c-protein);stroke-width:1.8;fill:none;}
+  .avgt{fill:var(--c-protein);font-size:11px;font-weight:700;}
+  .day{fill:var(--muted);font-size:11px;}
+  .base{stroke:var(--hairline);stroke-width:1.2;}
+
   @media (max-width:640px){
     .split{grid-template-columns:1fr;gap:1.4rem;}
   }
@@ -565,83 +588,157 @@
 
     <section>
       <div class="sec-head">
-        <h2>Finding your plan in Everfit</h2>
-        <p class="note">Everything below happens in the Everfit app on your phone.</p>
+        <h2>How your flexible plan works</h2>
+        <p class="note">You have a <b>flexible</b> plan, which works differently to a fixed one. Nothing is locked to a particular day — you choose.</p>
+      </div>
+
+      <figure class="fig">
+        <svg viewBox="0 0 760 200" role="img" aria-label="Liv loads meal options into four category tabs; you drag them onto days; you log what you ate; the app averages your week against your target.">
+          <rect class="bx" x="10" y="66" width="140" height="66" rx="10"/>
+          <text class="bxt" x="80" y="94" text-anchor="middle">Liv loads<tspan class="bxs" x="80" dy="17">your options</tspan></text>
+
+          <rect class="bx" x="210" y="66" width="140" height="66" rx="10"/>
+          <text class="bxt" x="280" y="94" text-anchor="middle">4 meal tabs<tspan class="bxs" x="280" dy="17">2 choices each</tspan></text>
+
+          <rect class="bx" x="410" y="66" width="140" height="66" rx="10"/>
+          <text class="bxt" x="480" y="94" text-anchor="middle">Your week<tspan class="bxs" x="480" dy="17">in the planner</tspan></text>
+
+          <rect class="bx" x="610" y="66" width="140" height="66" rx="10"/>
+          <text class="bxt" x="680" y="94" text-anchor="middle">Weekly average<tspan class="bxs" x="680" dy="17">vs your target</tspan></text>
+
+          <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+          <line class="arw" x1="152" y1="99" x2="206" y2="99" marker-end="url(#ar)"/>
+          <text class="arwt" x="179" y="88" text-anchor="middle">appear in</text>
+          <line class="arw" x1="352" y1="99" x2="406" y2="99" marker-end="url(#ar)"/>
+          <text class="arwt" x="379" y="88" text-anchor="middle">you drag</text>
+          <line class="arw" x1="552" y1="99" x2="606" y2="99" marker-end="url(#ar)"/>
+          <text class="arwt" x="579" y="88" text-anchor="middle">you log</text>
+        </svg>
+        <figcaption>Liv supplies the options — <b>you</b> choose which ones and when. The two middle steps are the only work you do.</figcaption>
+      </figure>
+
+      <div class="plain">
+        <h3>The short version</h3>
+        <p>Your meals sit in four tabs: <span class="ui">Breakfast</span>, <span class="ui">Lunch</span>, <span class="ui">Dinner</span> and <span class="ui">Snack</span>. Each tab holds your choices for that meal. You drag the ones you want onto the days you want them, eat, and tap log. That's the whole system.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>Finding it</h2>
+        <p class="note">Two ways in — both land in the same place.</p>
       </div>
       <ol class="steps">
-        <li><p>Open Everfit and go to your <span class="ui">Recipe Books</span>.</p></li>
-        <li><p>Tap the <span class="ui">Meal Planner</span> icon. This is your calendar — it's where your week lives.</p></li>
-        <li><p>Because you're on a flexible plan, your meals sit under tabs for <span class="ui">Breakfast</span>, <span class="ui">Lunch</span>, <span class="ui">Dinner</span> and <span class="ui">Snack</span> rather than being pinned to set days. Your two options per meal are in there.</p></li>
-        <li><p>There's an icon in the header to switch between <b>list view</b> and <b>grid view</b>. Use whichever you find easier to read.</p></li>
+        <li><p>On the <b>Today</b> screen, tap the <span class="ui">Meal Plan</span> section. This opens today on its own.</p></li>
+        <li><p>On the <b>Coaching</b> screen, tap the <span class="ui">Meal Options</span> section to see the whole week.</p></li>
+        <li><p>From either, tap the <span class="ui">Meal Planner</span> icon to open the calendar where you arrange things.</p></li>
       </ol>
     </section>
 
     <section>
       <div class="sec-head">
-        <h2>Planning your week</h2>
-        <p class="note">This is the step that makes the shopping list work.</p>
-      </div>
-      <div class="plain">
-        <p>Tap <span class="ui">Edit</span> or <span class="ui">Schedule</span> to go into planning mode, then <b>drag a meal from its tab onto a day</b> in the calendar. Do that for the meals you want that week.</p>
-        <p>You don't have to fill every slot perfectly. Even roughly planning the week is enough for the app to build your groceries — and it's what turns this from a document into something that saves you time.</p>
-      </div>
-    </section>
-
-    <section>
-      <div class="sec-head">
-        <h2>Logging a meal</h2>
-        <p class="note">&ldquo;Logging&rdquo; just means telling the app you ate it, so it adds up your day for you.</p>
+        <h2>Choosing your week</h2>
+        <p class="note">Do this once, ideally Sunday. It takes a couple of minutes.</p>
       </div>
       <ol class="steps">
-        <li><p>Tap the meal you ate to open it.</p></li>
-        <li><p>Tap <span class="ui">Log Meal</span>.</p></li>
-        <li><p>You'll see a few tabs. The one you want is <span class="ui">Assigned</span> — that's the meals from your plan. Tap the <span class="ui">+</span> next to it.</p></li>
-        <li><p>Set your <b>servings</b>. Whole thing is 1. Ate half? Enter a half. Had it twice today? On a flexible plan you can log the same meal as many times as you like.</p></li>
-        <li><p>Check the date and time, then tap <span class="ui">Log</span>. Done.</p></li>
+        <li><p>Open the <span class="ui">Meal Planner</span> and tap <span class="ui">Edit</span> or <span class="ui">Schedule</span>.</p></li>
+        <li><p><b>Drag a meal from its tab onto a day.</b> You can drag several at once, and you can put the same meal on as many days as you like — the same breakfast all week is completely fine.</p></li>
+        <li><p>Repeat until the week looks roughly how you want it. It doesn't need to be perfect or complete.</p></li>
       </ol>
       <div class="callout">
-        <span class="tag">Forgot to log at the time?</span>
-        <p>You can log for today or for a past date, so catching up in the evening is fine. You just can't log into the future.</p>
-      </div>
-      <div class="plain">
-        <h3>Something that isn't on the plan</h3>
-        <p>Use the <span class="ui">Search</span> tab and search the food by name. If it isn't there, use <span class="ui">Manual Add</span> and enter it yourself. Log it either way — an accurate week is the thing that lets Liv adjust your plan properly.</p>
+        <span class="tag">Why this step matters</span>
+        <p>Choosing your week is what lets the app write your shopping list. Skip it and you're back to working the whole thing out in the aisle.</p>
       </div>
     </section>
 
     <section>
       <div class="sec-head">
-        <h2>The shopping list</h2>
-        <p class="note">The app will write your grocery list from your plan. This is the feature most people never find.</p>
+        <h2>Logging what you ate</h2>
+        <p class="note">Logging just means telling the app you ate it.</p>
       </div>
       <ol class="steps">
-        <li><p>From the <span class="ui">Meal Planner</span> screen, tap the <b>menu icon</b>.</p></li>
-        <li><p>Choose <span class="ui">Add Current Week to Shopping List</span>.</p></li>
-        <li><p>Every meal from that week appears. Tick the ones you want, and change the number of servings if you're batch cooking — set the Chicken Bowl to 3 and it multiplies the ingredients for you.</p></li>
-        <li><p>Tap <span class="ui">Add</span>. Your list is built.</p></li>
+        <li><p>Tap the meal, then tap <span class="ui">Log Meal</span>.</p></li>
+        <li><p>Choose the <span class="ui">Assigned</span> tab — that's your plan — and tap the <span class="ui">+</span>.</p></li>
+        <li><p>Set your <b>servings</b>: 1 for the whole thing, or a half if you ate half.</p></li>
+        <li><p>Check the date, then tap <span class="ui">Log</span>.</p></li>
       </ol>
       <div class="plain">
-        <p>To add a single meal instead of the whole week, open that recipe, tap its menu button and choose <span class="ui">Add to Shopping List</span>.</p>
+        <h3>Got it wrong? Undo it</h3>
+        <p>Open the recipe, tap the <span class="ui">...</span> menu and choose <span class="ui">Unlog</span>. If you logged it once it disappears straight away. If you logged it more than once, you'll get a list with times so you can remove just the one you meant.</p>
+      </div>
+      <div class="plain">
+        <h3>Ate something not on the plan</h3>
+        <p>Use the <span class="ui">Search</span> tab to find it by name, or <span class="ui">Manual Add</span> to type it in. Log it either way — Liv would much rather see your real week.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>Why the app shows averages</h2>
+        <p class="note">Your plan is measured across the week, not day by day.</p>
       </div>
 
+      <figure class="fig">
+        <svg viewBox="0 0 720 215" role="img" aria-label="Bar chart of seven days ranging from 2200 to 2900 calories. No single day hits the 2547 target, but the weekly average of 2533 sits within one percent of it.">
+          <line class="base" x1="60" y1="175" x2="660" y2="175"/>
+
+          <rect class="bar" x="70"  y="93.7" width="60" height="81.3" rx="3"/>
+          <rect class="bar" x="155" y="79.6" width="60" height="95.4" rx="3"/>
+          <rect class="bar" x="240" y="88.4" width="60" height="86.6" rx="3"/>
+          <rect class="bar" x="325" y="72.6" width="60" height="102.4" rx="3"/>
+          <rect class="bar" x="410" y="97.3" width="60" height="77.7" rx="3"/>
+          <rect class="bar" x="495" y="83.1" width="60" height="91.9" rx="3"/>
+          <rect class="bar" x="580" y="83.9" width="60" height="91.1" rx="3"/>
+
+          <text class="barv" x="100" y="88"  text-anchor="middle">2300</text>
+          <text class="barv" x="185" y="74"  text-anchor="middle">2700</text>
+          <text class="barv" x="270" y="83"  text-anchor="middle">2450</text>
+          <text class="barv" x="355" y="67"  text-anchor="middle">2900</text>
+          <text class="barv" x="440" y="92"  text-anchor="middle">2200</text>
+          <text class="barv" x="525" y="78"  text-anchor="middle">2600</text>
+          <text class="barv" x="610" y="78"  text-anchor="middle">2580</text>
+
+          <line class="tgt" x1="60" y1="85" x2="660" y2="85"/>
+          <text class="tgtt" x="664" y="83">Target 2,547</text>
+
+          <text class="day" x="100" y="193" text-anchor="middle">Mon</text>
+          <text class="day" x="185" y="193" text-anchor="middle">Tue</text>
+          <text class="day" x="270" y="193" text-anchor="middle">Wed</text>
+          <text class="day" x="355" y="193" text-anchor="middle">Thu</text>
+          <text class="day" x="440" y="193" text-anchor="middle">Fri</text>
+          <text class="day" x="525" y="193" text-anchor="middle">Sat</text>
+          <text class="day" x="610" y="193" text-anchor="middle">Sun</text>
+
+          <text class="avgt" x="60" y="210">Week average 2,533 — within 1% of target</text>
+        </svg>
+        <figcaption>Not one of these days lands on target, and the week is still <b>bang on</b>. This is why a heavy Thursday or a light Friday doesn't need fixing — and why the app reports averages for each meal category and for the week, rather than grading your days.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>Your shopping list</h2>
+        <p class="note">The app writes it from the week you chose.</p>
+      </div>
+      <ol class="steps">
+        <li><p>In the <span class="ui">Meal Planner</span>, tap the <b>menu icon</b>.</p></li>
+        <li><p>Choose <span class="ui">Add Current Week to Shopping List</span>.</p></li>
+        <li><p>Tick the meals you want. Change the servings if you're batch cooking — set the Chicken Bowl to 3 and it multiplies the ingredients.</p></li>
+        <li><p>Tap <span class="ui">Add</span>.</p></li>
+      </ol>
       <div class="duo">
         <div class="plain">
           <h3>By Ingredient</h3>
-          <p>The default view. It <b>combines everything</b> — if three meals use chicken, you get one chicken line with the total amount. This is the view to actually shop from.</p>
+          <p>The default. Adds everything up, so three meals using chicken become <b>one</b> chicken line. Shop from this one.</p>
         </div>
         <div class="plain">
           <h3>By Recipe</h3>
-          <p>Groups the ingredients under each meal. Useful for checking what belongs to what, or for removing a meal you've changed your mind about.</p>
+          <p>Grouped under each meal. Use it to check what belongs to what, or to remove a meal you've changed your mind about.</p>
         </div>
       </div>
-
-      <div class="plain">
-        <p>Tick items off as they go in the trolley. In <b>By Recipe</b> view, the <span class="ui">...</span> button next to a meal lets you <span class="ui">Remove 1 Serving</span> or <span class="ui">Remove Recipe from List</span>. You can also keep separate named lists using <span class="ui">Create New List</span> — handy if you shop at two different places.</p>
-      </div>
-
       <div class="callout clay">
         <span class="tag">If your app looks different</span>
-        <p>Everfit updates the app fairly often and button names move around. If you can't find something described here, screenshot what you're looking at and send it to Liv rather than giving up on it.</p>
+        <p>Everfit moves things around between updates. If you can't find something here, screenshot what you're seeing and send it to Liv rather than giving up.</p>
       </div>
     </section>
 
