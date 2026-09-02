@@ -280,6 +280,63 @@
   .mcard p{font-size:.9rem;color:var(--ink-2);line-height:1.5;}
   .mcard .job{font-size:.86rem;color:var(--muted);}
 
+
+  /* --- tabs --- */
+  .tabs{
+    position:sticky;top:0;z-index:9;background:var(--paper);
+    display:flex;gap:.15rem;overflow-x:auto;
+    border-bottom:1px solid var(--hairline);
+    margin-bottom:-1.4rem;padding-top:.4rem;
+  }
+  .tabs button{
+    font-family:var(--sans);font-size:.82rem;font-weight:700;letter-spacing:.02em;
+    background:none;border:0;border-bottom:2.5px solid transparent;
+    color:var(--muted);padding:.75rem .95rem;cursor:pointer;white-space:nowrap;
+  }
+  .tabs button:hover{color:var(--ink);}
+  .tabs button[aria-selected="true"]{color:var(--forest);border-bottom-color:var(--sage-deep);}
+  .tabs button:focus-visible{outline:2px solid var(--sage-deep);outline-offset:-2px;border-radius:5px;}
+  .panel[hidden]{display:none;}
+  .panel{display:flex;flex-direction:column;gap:3rem;}
+
+  /* --- plain-English blocks --- */
+  .plain{
+    background:var(--card);border:1px solid var(--hairline);border-radius:16px;
+    box-shadow:var(--shadow);padding:1.4rem clamp(1.1rem,3vw,1.6rem);
+    display:flex;flex-direction:column;gap:.7rem;
+  }
+  .plain h3{font-family:var(--serif);font-weight:600;font-size:1.12rem;color:var(--forest);}
+  .plain p{font-size:.97rem;color:var(--ink-2);line-height:1.6;}
+  .callout{
+    background:var(--sage);border-radius:14px;
+    padding:1.15rem clamp(1rem,3vw,1.4rem);display:flex;flex-direction:column;gap:.45rem;
+  }
+  .callout .tag{
+    font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--sage-deep);
+  }
+  .callout p{font-size:.95rem;color:var(--ink-2);line-height:1.6;}
+  .callout.clay{background:color-mix(in srgb, var(--clay) 14%, var(--paper));}
+  .callout.clay .tag{color:var(--clay);}
+
+  /* --- numbered steps --- */
+  ol.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:flex;flex-direction:column;gap:1rem;}
+  ol.steps li{counter-increment:s;display:flex;gap:.9rem;align-items:flex-start;}
+  ol.steps li::before{
+    content:counter(s);flex-shrink:0;width:24px;height:24px;border-radius:50%;
+    background:var(--forest);color:var(--paper);
+    font-size:.72rem;font-weight:700;font-variant-numeric:tabular-nums;
+    display:flex;align-items:center;justify-content:center;margin-top:.15rem;
+  }
+  ol.steps li p{font-size:.97rem;color:var(--ink-2);line-height:1.55;}
+  ol.steps li p b{color:var(--ink);}
+  .ui{
+    font-family:var(--sans);font-weight:700;font-size:.85em;
+    background:var(--track);border:1px solid var(--hairline);
+    padding:.1rem .42rem;border-radius:5px;white-space:nowrap;color:var(--ink);
+  }
+  .duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.85rem;}
+
   @media (max-width:640px){
     .split{grid-template-columns:1fr;gap:1.4rem;}
   }
@@ -304,6 +361,66 @@
     </div>
     <p class="lede">You tracked last week, so this week you move onto a flexible plan — a set of meals that add up to your targets, not a list of rules. Here's what's on it, where your calories come from, and the basics worth knowing before you start.</p>
   </header>
+
+  <div class="tabs" role="tablist" aria-label="Sections">
+    <button role="tab" id="t-start" aria-controls="p-start" aria-selected="true">Start here</button>
+    <button role="tab" id="t-plan" aria-controls="p-plan" aria-selected="false">Your plan</button>
+    <button role="tab" id="t-app" aria-controls="p-app" aria-selected="false">Using the app</button>
+  </div>
+
+  <div class="panel" role="tabpanel" id="p-start" aria-labelledby="t-start">
+
+    <section>
+      <div class="sec-head">
+        <h2>Read this first</h2>
+        <p class="note">If the numbers on the next tab looked like a lot, that's normal. Nothing here needs maths from you — this page explains what it all means, in order.</p>
+      </div>
+
+      <div class="plain">
+        <h3>What a flexible plan actually is</h3>
+        <p>Last week you tracked what you ate, so we know what your normal week looks like. This plan isn't a timetable you have to obey. It's <b>a small set of meals that we know add up correctly</b>, with two choices at every meal.</p>
+        <p>You pick whichever of the two suits your day. Same breakfast seven days running is fine. Alternating is fine. The numbers were built so that either choice works — that's the whole point of calling it flexible.</p>
+      </div>
+
+      <div class="plain">
+        <h3>What a &ldquo;macro&rdquo; is</h3>
+        <p>Every single food is made of three things: <b>protein, carbs and fat</b>. That's it. People shorten &ldquo;macronutrients&rdquo; to &ldquo;macros&rdquo;, which makes it sound technical, but it just means those three.</p>
+        <p>Protein repairs your muscle and keeps you full. Carbs are your energy for training. Fat runs your hormones and helps you absorb certain vitamins. You need all three — none of them is the bad one.</p>
+      </div>
+
+      <div class="plain">
+        <h3>Why grams, and not just calories</h3>
+        <p>A calorie is just a measure of energy, and all your calories come from those three macros. So if you hit your macros, your calories take care of themselves.</p>
+        <p>The reason we count grams rather than only calories is that <b>where</b> the calories come from changes the result. 2,500 calories that are mostly carbs with barely any protein won't build or hold muscle. The same 2,500 with your protein hit will.</p>
+      </div>
+
+      <div class="callout">
+        <span class="tag">The single most important idea</span>
+        <p>Your targets are <b>weekly averages</b>, not daily rules. One day at 2,300 and the next at 2,700 averages out perfectly fine. You will never hit these numbers exactly, and you are not supposed to. Landing close, most days, is what a good week looks like.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>How to use this, day to day</h2>
+        <p class="note">The actual routine, start to finish.</p>
+      </div>
+      <ol class="steps">
+        <li><p><b>Sunday, pick your week.</b> Look at the two options for each meal and choose which you want on which days. Batch the Chicken Bowl if that makes your week easier.</p></li>
+        <li><p><b>Build your shopping list in the app.</b> Everfit will write it for you from the meals you chose — there are steps on the last tab. Shop from that list.</p></li>
+        <li><p><b>Eat the meal, then log it.</b> Logging takes about ten seconds and is what lets Liv see how the week actually went.</p></li>
+        <li><p><b>Ate something off-plan?</b> Log that too, honestly. A real week with a few off-plan meals is far more useful than a tidy week that didn't happen.</p></li>
+        <li><p><b>Don't chase a bad day.</b> If a day goes sideways, the fix is to eat your next meal as planned. Not to skip it, and not to make up for it.</p></li>
+      </ol>
+      <div class="callout clay">
+        <span class="tag">If you only protect one number</span>
+        <p>Make it <b>protein</b>. Carbs and fat can move around a fair bit week to week without much consequence. Protein is the one doing the work of holding onto muscle, and it's the one most likely to fall short on a messy day.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="panel" role="tabpanel" id="p-plan" aria-labelledby="t-plan" hidden>
 
   <section>
     <div class="sec-head">
@@ -441,6 +558,117 @@
     </div>
   </section>
 
+
+  </div>
+
+  <div class="panel" role="tabpanel" id="p-app" aria-labelledby="t-app" hidden>
+
+    <section>
+      <div class="sec-head">
+        <h2>Finding your plan in Everfit</h2>
+        <p class="note">Everything below happens in the Everfit app on your phone.</p>
+      </div>
+      <ol class="steps">
+        <li><p>Open Everfit and go to your <span class="ui">Recipe Books</span>.</p></li>
+        <li><p>Tap the <span class="ui">Meal Planner</span> icon. This is your calendar — it's where your week lives.</p></li>
+        <li><p>Because you're on a flexible plan, your meals sit under tabs for <span class="ui">Breakfast</span>, <span class="ui">Lunch</span>, <span class="ui">Dinner</span> and <span class="ui">Snack</span> rather than being pinned to set days. Your two options per meal are in there.</p></li>
+        <li><p>There's an icon in the header to switch between <b>list view</b> and <b>grid view</b>. Use whichever you find easier to read.</p></li>
+      </ol>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>Planning your week</h2>
+        <p class="note">This is the step that makes the shopping list work.</p>
+      </div>
+      <div class="plain">
+        <p>Tap <span class="ui">Edit</span> or <span class="ui">Schedule</span> to go into planning mode, then <b>drag a meal from its tab onto a day</b> in the calendar. Do that for the meals you want that week.</p>
+        <p>You don't have to fill every slot perfectly. Even roughly planning the week is enough for the app to build your groceries — and it's what turns this from a document into something that saves you time.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>Logging a meal</h2>
+        <p class="note">&ldquo;Logging&rdquo; just means telling the app you ate it, so it adds up your day for you.</p>
+      </div>
+      <ol class="steps">
+        <li><p>Tap the meal you ate to open it.</p></li>
+        <li><p>Tap <span class="ui">Log Meal</span>.</p></li>
+        <li><p>You'll see a few tabs. The one you want is <span class="ui">Assigned</span> — that's the meals from your plan. Tap the <span class="ui">+</span> next to it.</p></li>
+        <li><p>Set your <b>servings</b>. Whole thing is 1. Ate half? Enter a half. Had it twice today? On a flexible plan you can log the same meal as many times as you like.</p></li>
+        <li><p>Check the date and time, then tap <span class="ui">Log</span>. Done.</p></li>
+      </ol>
+      <div class="callout">
+        <span class="tag">Forgot to log at the time?</span>
+        <p>You can log for today or for a past date, so catching up in the evening is fine. You just can't log into the future.</p>
+      </div>
+      <div class="plain">
+        <h3>Something that isn't on the plan</h3>
+        <p>Use the <span class="ui">Search</span> tab and search the food by name. If it isn't there, use <span class="ui">Manual Add</span> and enter it yourself. Log it either way — an accurate week is the thing that lets Liv adjust your plan properly.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <h2>The shopping list</h2>
+        <p class="note">The app will write your grocery list from your plan. This is the feature most people never find.</p>
+      </div>
+      <ol class="steps">
+        <li><p>From the <span class="ui">Meal Planner</span> screen, tap the <b>menu icon</b>.</p></li>
+        <li><p>Choose <span class="ui">Add Current Week to Shopping List</span>.</p></li>
+        <li><p>Every meal from that week appears. Tick the ones you want, and change the number of servings if you're batch cooking — set the Chicken Bowl to 3 and it multiplies the ingredients for you.</p></li>
+        <li><p>Tap <span class="ui">Add</span>. Your list is built.</p></li>
+      </ol>
+      <div class="plain">
+        <p>To add a single meal instead of the whole week, open that recipe, tap its menu button and choose <span class="ui">Add to Shopping List</span>.</p>
+      </div>
+
+      <div class="duo">
+        <div class="plain">
+          <h3>By Ingredient</h3>
+          <p>The default view. It <b>combines everything</b> — if three meals use chicken, you get one chicken line with the total amount. This is the view to actually shop from.</p>
+        </div>
+        <div class="plain">
+          <h3>By Recipe</h3>
+          <p>Groups the ingredients under each meal. Useful for checking what belongs to what, or for removing a meal you've changed your mind about.</p>
+        </div>
+      </div>
+
+      <div class="plain">
+        <p>Tick items off as they go in the trolley. In <b>By Recipe</b> view, the <span class="ui">...</span> button next to a meal lets you <span class="ui">Remove 1 Serving</span> or <span class="ui">Remove Recipe from List</span>. You can also keep separate named lists using <span class="ui">Create New List</span> — handy if you shop at two different places.</p>
+      </div>
+
+      <div class="callout clay">
+        <span class="tag">If your app looks different</span>
+        <p>Everfit updates the app fairly often and button names move around. If you can't find something described here, screenshot what you're looking at and send it to Liv rather than giving up on it.</p>
+      </div>
+    </section>
+
+  </div>
+
 </div>
+
+<script>
+  (function(){
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabs button'));
+    function select(tab){
+      tabs.forEach(function(t){
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+    }
+    tabs.forEach(function(t){
+      t.addEventListener('click', function(){ select(t); });
+      t.addEventListener('keydown', function(e){
+        var i = tabs.indexOf(t), n = null;
+        if(e.key === 'ArrowRight'){ n = tabs[(i+1) % tabs.length]; }
+        if(e.key === 'ArrowLeft'){ n = tabs[(i-1+tabs.length) % tabs.length]; }
+        if(n){ e.preventDefault(); n.focus(); select(n); }
+      });
+    });
+  })();
+</script>
 </body>
 </html>
